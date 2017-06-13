@@ -149,10 +149,13 @@ int main(int argc, char *argv[])
 
     set_default_options_dist(&options);
 
-    /* Set the ColPerm and num of lookaheads parameters -- JBL*/
+    // Set the ColPerm and num of lookaheads parameters 
+    // Parameters set as environmental variables
+    // To be used with autotuning experiements
+    // Janaan Lake 6/2017
+
     char *ctemp;
     ctemp = getenv("COLPERM");
-    printf("COLPERM is %s\n", ctemp);
     int col = atoi(ctemp);
     printf("COLPERM is %d\n", col);
     if (ctemp){
@@ -160,16 +163,16 @@ int main(int argc, char *argv[])
 		case 0: options.ColPerm = NATURAL;
 			printf("ColPerm is NATURAL\n");
 			break;
-		case 2: options.ColPerm = MMD_AT_PLUS_A;
-			printf("ColPerm is MMD_AT_PLUS_A\n");
-			break;
 		case 1: options.ColPerm = MMD_ATA;;
 			printf("ColPerm is MMD_ATA\n");
 			break;
-		case 4: options.ColPerm = METIS_AT_PLUS_A;;
+		case 2: options.ColPerm = MMD_AT_PLUS_A;
+			printf("ColPerm is MMD_AT_PLUS_A\n");
+			break;
+		case 3: options.ColPerm = METIS_AT_PLUS_A;;
 			printf("ColPerm is METIS_AT_PLUS_A\n");
 			break;
-		case 5: options.ColPerm = PARMETIS;
+		case 4: options.ColPerm = PARMETIS;
 			printf("ColPerm is PARMETIS\n");
 			break;
 		default: printf("ColPerm is default: METIS_AT_PLUS_A\n");
@@ -179,7 +182,6 @@ int main(int argc, char *argv[])
    
    char *ltemp;
    ltemp = getenv("NUM_LOOKAHEADS");
-   printf("NUM_LOOKAHEADS is %s\n", ltemp);
    if (ltemp){
 	options.num_lookaheads = atoi(ltemp);
     	printf("Number of lookaheads is %d\n", atoi(ltemp));

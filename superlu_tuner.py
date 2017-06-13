@@ -15,7 +15,7 @@ class SuperLUTuner(MeasurementInterface):
 
         manipulator.add_parameter(IntegerParameter('nsup', 50, 300))
         manipulator.add_parameter(IntegerParameter('nrel', 10, 40))
-        manipulator.add_parameter(IntegerParameter('colperm', 0, 5))
+        manipulator.add_parameter(IntegerParameter('colperm', 0, 4))
         manipulator.add_parameter(IntegerParameter('lookahead', 0, 10))
         manipulator.add_parameter(IntegerParameter('numthreads', 1, 10))
 
